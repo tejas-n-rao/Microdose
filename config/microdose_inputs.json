@@ -1,0 +1,187 @@
+{
+  "grid": {
+    "width": 50,
+    "height": 50,
+    "start": [
+      3,
+      24
+    ],
+    "seed_jitter": 4,
+    "blocked": [],
+    "obstacle_style": "veins"
+  },
+  "tumours": {
+    "A": {
+      "true": [
+        13,
+        34
+      ],
+      "estimated": [
+        13,
+        33
+      ],
+      "radius": 1,
+      "conformal_radius": 2,
+      "confidence": 0.9,
+      "seed_jitter": 4
+    },
+    "B": {
+      "true": [
+        40,
+        25
+      ],
+      "estimated": [
+        39,
+        25
+      ],
+      "radius": 1,
+      "conformal_radius": 3,
+      "confidence": 0.86,
+      "seed_jitter": 5
+    },
+    "C": {
+      "true": [
+        28,
+        12
+      ],
+      "estimated": [
+        28,
+        13
+      ],
+      "radius": 1,
+      "conformal_radius": 4,
+      "confidence": 0.79,
+      "seed_jitter": 4
+    }
+  },
+  "environment_profiles": {
+    "deterministic": {
+      "label": "Deterministic",
+      "perception_noise": 0.08,
+      "drift_noise_bonus": 0.08,
+      "hazard_decay": 1,
+      "hazard_diffusion": 0,
+      "flow_decay": 1,
+      "hazard_source_scale": 0,
+      "flow_source_scale": 0,
+      "uncertainty_scale": 0.35,
+      "horizontal_slip": 0,
+      "left_bias": 0.9,
+      "vertical_slip": 0,
+      "down_bias": 0.75
+    },
+    "low": {
+      "label": "Low stochasticity",
+      "perception_noise": 0.08,
+      "drift_noise_bonus": 0.08,
+      "hazard_decay": 1,
+      "hazard_diffusion": 0,
+      "flow_decay": 0.998,
+      "hazard_source_scale": 0,
+      "flow_source_scale": 0.35,
+      "uncertainty_scale": 0.65,
+      "horizontal_slip": 0.08,
+      "left_bias": 0.85,
+      "vertical_slip": 0.03,
+      "down_bias": 0.75
+    },
+    "stochastic": {
+      "label": "Stochastic",
+      "perception_noise": 0.08,
+      "drift_noise_bonus": 0.08,
+      "hazard_decay": 1,
+      "hazard_diffusion": 0,
+      "flow_decay": 0.995,
+      "hazard_source_scale": 0,
+      "flow_source_scale": 1,
+      "uncertainty_scale": 1,
+      "horizontal_slip": 0.25,
+      "left_bias": 0.82,
+      "vertical_slip": 0.1,
+      "down_bias": 0.72
+    },
+    "very_high": {
+      "label": "Very high stochasticity",
+      "perception_noise": 0.08,
+      "drift_noise_bonus": 0.08,
+      "hazard_decay": 1,
+      "hazard_diffusion": 0,
+      "flow_decay": 0.992,
+      "hazard_source_scale": 0,
+      "flow_source_scale": 1.45,
+      "uncertainty_scale": 1.35,
+      "horizontal_slip": 0.38,
+      "left_bias": 0.8,
+      "vertical_slip": 0.18,
+      "down_bias": 0.7
+    }
+  },
+  "field_model": {
+    "shear_band": {
+      "y": 24,
+      "x_min_exclusive": 14,
+      "x_max_exclusive": 38,
+      "cost": 0.28
+    },
+    "healthy_tissue": [
+      {
+        "cx": 13.0,
+        "cy": 31.0,
+        "sigma": 4.6,
+        "weight": 0.34,
+        "seed_jitter": 5,
+        "min_spacing": 7
+      },
+      {
+        "cx": 30.0,
+        "cy": 19.0,
+        "sigma": 5.2,
+        "weight": 0.3,
+        "seed_jitter": 5,
+        "min_spacing": 7
+      },
+      {
+        "cx": 39.0,
+        "cy": 38.0,
+        "sigma": 4.8,
+        "weight": 0.28,
+        "seed_jitter": 5,
+        "min_spacing": 7
+      }
+    ],
+    "center_chaos": {
+      "weight": 0.16,
+      "description": "Small penalty on the vessel centreline where flow is more chaotic."
+    },
+    "wall_safety": {
+      "near_wall_bonus": 0.055,
+      "narrow_center_bonus": 0.06,
+      "thick_opening_min_depth": 2,
+      "description": "Wide openings give a small safety bonus within two cells of the wall; narrow openings keep the centre comparatively safer."
+    },
+    "flow": {
+      "x_frequency": 0.72,
+      "y_frequency": 0.45,
+      "scale": 0.9,
+      "right_side_extra_cost_x_gt": 16,
+      "right_side_extra_cost": 0.12
+    }
+  },
+  "reward": {
+    "benefit_max": 100,
+    "benefit_ec50": 55,
+    "efficacy_decay_per_step": 0.006,
+    "efficacy_floor": 0.35,
+    "toxicity_max": 32,
+    "toxicity_tc50": 85,
+    "near_tumour_release_radius": 1,
+    "near_tumour_release_bonus": 10,
+    "healthy_cell_release_probability": 0.2,
+    "healthy_cell_hit_threshold": 0.18
+  },
+  "sensors": {
+    "microscope_position_noise": 0.08,
+    "microscope_drift_noise_bonus": 0.08,
+    "tumour_reach_accuracy": 0.9
+  }
+}

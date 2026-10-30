@@ -1,0 +1,59 @@
+{
+  "description": "Synthetic experiment labels; no clinical reagent efficacy claim. Delivery carriers X/Y/Z are distinct from vessel geometry IDs.",
+  "tumour_types": {
+    "A": "type_1",
+    "B": "type_1",
+    "C": "type_2"
+  },
+  "carrier_reagents": {
+    "X": [
+      "X"
+    ],
+    "Y": [
+      "Y"
+    ],
+    "Z": [
+      "X",
+      "Y"
+    ]
+  },
+  "compatible_reagents": {
+    "type_1": [
+      "X"
+    ],
+    "type_2": [
+      "Y"
+    ]
+  },
+  "policy": "On a seen layout, tissue protection selects Q-learning Safety and speed selects distance A*. Ask for priority when unspecified. On an unseen layout, always use distance A*.",
+  "speed_units": "All robots have one movement opportunity per shared timestep. Fast means distance-A* routing; speed-route intent has reservation priority, with seeded random ties.",
+  "urgent_tumour": "B",
+  "urgency_policy": "Exactly one tumour is designated urgent. ReAct may change it only from an explicit user request. Urgency does not alter speed conflict priority or waive other SMT constraints.",
+  "required_doses": {
+    "A": 50,
+    "B": 55,
+    "C": 50
+  },
+  "dosage_policy": "Synthetic maximum necessary reagent per target per deployment, aggregated across carriers. Travel consumes no reagent; at most one terminal release per carrier. Excess allocations require a revised plan, not an override.",
+  "carrier_capacities": {
+    "X": 60,
+    "Y": 60,
+    "Z": 60
+  },
+  "capacity_policy": "Synthetic maximum payload per robot is 60 aggregate reagent units; target dose caps remain independently enforced.",
+  "natural_language_scenarios": {
+    "very_high": 0.1,
+    "stochastic": 0.6,
+    "low": 0.3
+  },
+  "environment_sensor": {
+    "description": "Synthetic sensor confusion rates supplied by the experiment; not an empirically fitted calibration or confidence posterior. Prediction is independent of route safety scores.",
+    "very_high_alert_rates": {
+      "very_high": 0.85,
+      "stochastic": 0.1,
+      "low": 0.02,
+      "deterministic": 0.0
+    },
+    "policy": "A very-high sensor alert requires Q-learning Safety for all assigned robots, overriding speed intent and the unseen A* rule. User must accept this plan or cancel. Other admission constraints still apply."
+  }
+}

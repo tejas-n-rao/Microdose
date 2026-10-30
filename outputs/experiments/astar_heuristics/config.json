@@ -1,0 +1,30 @@
+{
+  "heuristics": [
+    "manhattan",
+    "euclidean",
+    "chebyshev",
+    "dijkstra"
+  ],
+  "baseline": "Dijkstra (zero heuristic)",
+  "layouts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "robots": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "targets": [
+    "A",
+    "B",
+    "C"
+  ],
+  "repeats": 10,
+  "cost": "one per cardinal move",
+  "validation": "Every timed path checked against BFS",
+  "scope": "Static planning only; no drift, release, safety scoring, training or controller selection"
+}

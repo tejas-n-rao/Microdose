@@ -1,0 +1,11 @@
+# Python 3.11; pinned to the current development environment.
+numpy==1.26.4
+matplotlib==3.10.7
+pandas==2.1.4
+streamlit==1.39.0
+pydantic==2.9.2
+openai==1.51.2
+python-dotenv==1.0.1
+z3-solver==4.13.3.0
+
+# SQLite is included with Python; no separate package is needed.
